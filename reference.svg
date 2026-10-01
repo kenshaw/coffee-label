@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 100" width="400" height="100">
+  <defs>
+    <style>
+      .bg { fill: #ffffff; }
+      .border { stroke: #000000; stroke-width: 2; fill: none; }
+      .line { stroke: #000000; stroke-width: 1.5; }
+      .badge-bg { fill: #000000; }
+      .badge-text { fill: #ffffff; font-family: 'JetBrains Mono', 'Courier New', monospace; font-size: 8.5px; font-weight: bold; }
+      .title { fill: #000000; font-family: 'Arial Black', 'Impact', sans-serif; font-size: 13px; letter-spacing: 0.8px; font-weight: 900; }
+      .spec-label { fill: #000000; font-family: 'JetBrains Mono', monospace; font-size: 7.5px; font-weight: 800; }
+      .spec-val { fill: #000000; font-family: 'JetBrains Mono', monospace; font-size: 7.5px; font-weight: 400; }
+      .telemetry { fill: #000000; font-family: 'JetBrains Mono', monospace; font-size: 7px; font-weight: 600; letter-spacing: 0.3px; }
+    </style>
+  </defs>
+
+  <!-- Outer Border Frame -->
+  <rect class="bg" width="400" height="100" />
+  <rect class="border" x="2" y="2" width="396" height="96" rx="2" />
+
+  <!-- ZONE 1: HEADER -->
+  <rect class="badge-bg" x="8" y="8" width="82" height="15" rx="1" />
+  <text class="badge-text" x="12" y="18.5">COFFEE//SPEC</text>
+
+  <!-- Main Name: Replace this string for new coffee types -->
+  <text class="title" x="98" y="20">SUMATERA MANDHELING</text>
+
+  <!-- Origin Badge -->
+  <rect class="badge-bg" x="338" y="8" width="54" height="15" rx="1" />
+  <text class="badge-text" x="344" y="18.5">ORG: IDN</text>
+
+  <!-- Top Divider -->
+  <line class="line" x1="2" y1="28" x2="398" y2="28" />
+
+  <!-- ZONE 2: TASTING & PROCESS SPECS -->
+  <text class="spec-label" x="10" y="42">ROAST:</text>
+  <text class="spec-val" x="44" y="42">MEDIUM-DARK</text>
+
+  <text class="spec-label" x="160" y="42">PROCESS:</text>
+  <text class="spec-val" x="206" y="42">WET-HULLED (GILING BASAH)</text>
+
+  <text class="spec-label" x="10" y="58">PROFILE:</text>
+  <text class="spec-val" x="52" y="58">EARTHY // DARK CHOCOLATE // CEDAR // HERBAL</text>
+
+  <!-- Bottom Divider -->
+  <line class="line" x1="2" y1="68" x2="398" y2="68" />
+
+  <!-- ZONE 3: TELEMETRY BAR -->
+  <text class="telemetry" x="10" y="84">ELEV: 1,200-1,500M</text>
+  <text class="telemetry" x="115" y="84">|</text>
+  <text class="telemetry" x="128" y="84">LOT: #SM-26A</text>
+  <text class="telemetry" x="200" y="84">|</text>
+  <text class="telemetry" x="213" y="84">ACIDITY: LOW</text>
+
+  <!-- Date / Seal Block -->
+  <rect class="badge-bg" x="316" y="73" width="76" height="18" rx="1" />
+  <text class="badge-text" x="323" y="85">PACK: 2026.10</text>
+</svg>
