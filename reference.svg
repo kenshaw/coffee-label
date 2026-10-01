@@ -1,57 +1,47 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 100" width="400" height="100">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 100" width="1024" height="256">
   <defs>
     <style>
       .bg { fill: #ffffff; }
-      .border { stroke: #000000; stroke-width: 2; fill: none; }
+      .border { stroke: #000000; stroke-width: 2.5; fill: none; }
       .line { stroke: #000000; stroke-width: 1.5; }
+      .title { fill: #000000; font-family: 'Arial Black', 'Impact', 'DejaVu Sans', 'Liberation Sans', sans-serif; font-weight: 900; letter-spacing: 0.8px; }
+      .mono { fill: #000000; font-family: 'JetBrains Mono', 'DejaVu Sans Mono', monospace; font-weight: 400; }
       .badge-bg { fill: #000000; }
-      .badge-text { fill: #ffffff; font-family: 'JetBrains Mono', 'Courier New', monospace; font-size: 8.5px; font-weight: bold; }
-      .title { fill: #000000; font-family: 'Arial Black', 'Impact', sans-serif; font-size: 13px; letter-spacing: 0.8px; font-weight: 900; }
-      .spec-label { fill: #000000; font-family: 'JetBrains Mono', monospace; font-size: 7.5px; font-weight: 800; }
-      .spec-val { fill: #000000; font-family: 'JetBrains Mono', monospace; font-size: 7.5px; font-weight: 400; }
-      .telemetry { fill: #000000; font-family: 'JetBrains Mono', monospace; font-size: 7px; font-weight: 600; letter-spacing: 0.3px; }
+      .badge-text { fill: #ffffff; font-weight: 700; }
+      .telemetry { font-weight: 600; letter-spacing: 0.2px; }
+      .label { font-family: 'JetBrains Mono ExtraBold', 'JetBrains Mono', 'DejaVu Sans Mono', monospace; font-weight: 800; }
     </style>
   </defs>
 
-  <!-- Outer Border Frame -->
+  <!-- Background and Inset Border -->
   <rect class="bg" width="400" height="100" />
-  <rect class="border" x="2" y="2" width="396" height="96" rx="2" />
+  <rect class="border" x="2" y="2" width="396" height="96" rx="1.5" />
 
-  <!-- ZONE 1: HEADER -->
-  <rect class="badge-bg" x="8" y="8" width="82" height="15" rx="1" />
-  <text class="badge-text" x="12" y="18.5">COFFEE//SPEC</text>
+  <!-- ZONE 1: TELEMETRY -->
+  <rect class="badge-bg" x="7.00" y="7.00" width="57.48" height="17.50" rx="1" />
+  <text class="mono telemetry badge-text" x="11.50" y="19.4" font-size="10.00">ORG: IDN</text>
+  <text class="mono telemetry label" x="93.96" y="19.4" font-size="10.00">ELEV:</text>
+  <text class="mono telemetry" x="130.32" y="19.4" font-size="10.00">1,200-1,500M</text>
+  <text class="mono telemetry" x="209.09" y="19.4" font-size="10.00">|</text>
+  <text class="mono telemetry label" x="221.21" y="19.4" font-size="10.00">ACID:</text>
+  <text class="mono telemetry" x="257.56" y="19.4" font-size="10.00">LOW</text>
+  <rect class="badge-bg" x="305.23" y="7.00" width="87.77" height="17.50" rx="1" />
+  <text class="mono telemetry badge-text" x="309.73" y="19.4" font-size="10.00">PACK: 2026.10</text>
 
-  <!-- Main Name: Replace this string for new coffee types -->
-  <text class="title" x="98" y="20">SUMATERA MANDHELING</text>
+  <!-- Divider 1 -->
+  <line class="line" x1="2" y1="29" x2="398" y2="29" />
 
-  <!-- Origin Badge -->
-  <rect class="badge-bg" x="338" y="8" width="54" height="15" rx="1" />
-  <text class="badge-text" x="344" y="18.5">ORG: IDN</text>
+  <!-- ZONE 2: TITLE (vertically centered on the label) -->
+  <text class="title" x="11.15" y="56.63" font-size="25.50">SUMATERA MANDHELING</text>
 
-  <!-- Top Divider -->
-  <line class="line" x1="2" y1="28" x2="398" y2="28" />
+  <!-- Divider 2 -->
+  <line class="line" x1="2" y1="66" x2="398" y2="66" />
 
-  <!-- ZONE 2: TASTING & PROCESS SPECS -->
-  <text class="spec-label" x="10" y="42">ROAST:</text>
-  <text class="spec-val" x="44" y="42">MEDIUM-DARK</text>
-
-  <text class="spec-label" x="160" y="42">PROCESS:</text>
-  <text class="spec-val" x="206" y="42">WET-HULLED (GILING BASAH)</text>
-
-  <text class="spec-label" x="10" y="58">PROFILE:</text>
-  <text class="spec-val" x="52" y="58">EARTHY // DARK CHOCOLATE // CEDAR // HERBAL</text>
-
-  <!-- Bottom Divider -->
-  <line class="line" x1="2" y1="68" x2="398" y2="68" />
-
-  <!-- ZONE 3: TELEMETRY BAR -->
-  <text class="telemetry" x="10" y="84">ELEV: 1,200-1,500M</text>
-  <text class="telemetry" x="115" y="84">|</text>
-  <text class="telemetry" x="128" y="84">LOT: #SM-26A</text>
-  <text class="telemetry" x="200" y="84">|</text>
-  <text class="telemetry" x="213" y="84">ACIDITY: LOW</text>
-
-  <!-- Date / Seal Block -->
-  <rect class="badge-bg" x="316" y="73" width="76" height="18" rx="1" />
-  <text class="badge-text" x="323" y="85">PACK: 2026.10</text>
+  <!-- ZONE 3: SPECS -->
+  <text class="mono label" x="28.12" y="78" font-size="10.50">ROAST:</text>
+  <text class="mono" x="71.88" y="78" font-size="10.50">MEDIUM-DARK</text>
+  <text class="mono label" x="159.38" y="78" font-size="10.50">PROCESS:</text>
+  <text class="mono" x="215.62" y="78" font-size="10.50">WET-HULLED (GILING BASAH)</text>
+  <text class="mono label" x="37.50" y="92" font-size="10.50">PROFILE:</text>
+  <text class="mono" x="93.75" y="92" font-size="10.50">EARTHY // DARK CHOCOLATE // CEDAR // HERBAL</text>
 </svg>
