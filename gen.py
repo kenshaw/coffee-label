@@ -54,8 +54,12 @@ VIEW_WIDTH = 400
 VIEW_HEIGHT = 100
 CENTER_X = VIEW_WIDTH / 2
 TEXT_WIDTH = 380
-# Distance of pinned badges from the label edges (matches their gap to the top border)
-EDGE_INSET = 7
+# Border rect and the top band (above divider 1) that pinned badges fill
+BORDER = 2
+BORDER_STROKE = 2.5
+HEADER_BOTTOM = 29
+# Pinned badges sit flush against the inside of the border
+EDGE_INSET = BORDER + BORDER_STROKE / 2
 
 # cairosvg only uses the first family of a font-family list
 MONO_FONT = "'JetBrains Mono', 'DejaVu Sans Mono', monospace"
@@ -73,13 +77,15 @@ TITLE_SPACING = 0.8
 BADGE_PAD = 0.45
 BADGE_HEIGHT = 1.75
 BADGE_RISE = 1.24
+# Side padding of pinned corner badges, which are taller than inline ones
+CORNER_PAD = 0.7
 TELEMETRY_SPACING = 0.2
 
 SVG_TEMPLATE = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {VIEW_WIDTH} {VIEW_HEIGHT}" width="{TARGET_WIDTH}" height="{TARGET_HEIGHT}">
   <defs>
     <style>
       .bg {{{{ fill: #ffffff; }}}}
-      .border {{{{ stroke: #000000; stroke-width: 2.5; fill: none; }}}}
+      .border {{{{ stroke: #000000; stroke-width: {BORDER_STROKE}; fill: none; }}}}
       .line {{{{ stroke: #000000; stroke-width: 1.5; }}}}
       .title {{{{ fill: #000000; font-family: {TITLE_FONT}; font-weight: 900; letter-spacing: {TITLE_SPACING}px; }}}}
       .mono {{{{ fill: #000000; font-family: {MONO_FONT}; font-weight: 400; }}}}
@@ -92,13 +98,13 @@ SVG_TEMPLATE = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {VIEW_WID
 
   <!-- Background and Inset Border -->
   <rect class="bg" width="{VIEW_WIDTH}" height="{VIEW_HEIGHT}" />
-  <rect class="border" x="2" y="2" width="396" height="96" rx="1.5" />
+  <rect class="border" x="{BORDER}" y="{BORDER}" width="{BORDER_W}" height="{BORDER_H}" rx="1.5" />
 
   <!-- ZONE 1: TELEMETRY -->
 {{TELEMETRY}}
 
   <!-- Divider 1 -->
-  <line class="line" x1="2" y1="29" x2="398" y2="29" />
+  <line class="line" x1="2" y1="{HEADER_BOTTOM}" x2="398" y2="{HEADER_BOTTOM}" />
 
   <!-- ZONE 2: TITLE (vertically centered on the label) -->
 {{TITLE}}
@@ -115,6 +121,8 @@ SVG_TEMPLATE = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {VIEW_WID
     TARGET_WIDTH=TARGET_WIDTH, TARGET_HEIGHT=TARGET_HEIGHT,
     TITLE_FONT=TITLE_FONT, MONO_FONT=MONO_FONT, LABEL_FONT=LABEL_FONT,
     TITLE_SPACING=TITLE_SPACING, TELEMETRY_SPACING=TELEMETRY_SPACING,
+    BORDER=BORDER, BORDER_STROKE=BORDER_STROKE, HEADER_BOTTOM=HEADER_BOTTOM,
+    BORDER_W=VIEW_WIDTH - 2 * BORDER, BORDER_H=VIEW_HEIGHT - 2 * BORDER,
 )
 
 # Measure at the render scale: cairo hints glyph advances to device pixels
@@ -131,10 +139,10 @@ def text_width(text: str, family: str, size: float, bold: bool, spacing: float =
     return _measure.text_extents(text)[4] + spacing * len(text)
 
 
-def _layout(segments, size, family, spacing, bold_weight):
+def _layout(segments, size, family, spacing, bold_weight, pad_ratio=BADGE_PAD):
     """Widths of (text, style) segments, the space between them and badge padding."""
     space = text_width(" ", family, size, False, spacing)
-    pad = BADGE_PAD * size
+    pad = pad_ratio * size
     widths = []
     for t, style in segments:
         face = LABEL_FONT if style == "label" else family
@@ -168,8 +176,9 @@ def centered_line(segments, y: float, family: str, size: float, classes: str,
     style is None, "label" (extra bold field name) or "badge" (white bold text
     on a black box).
     Segments are separated by one space; an empty segment adds an extra space.
-    left / right are single segments pinned EDGE_INSET from the label edges;
-    the other segments are then centered in the space between them.
+    left / right are single badge segments filling the top corners of the
+    label, from the border to divider 1; the other segments are then
+    centered in the space between them.
     The font size shrinks from size only if the line would not fit.
     If cap (cap height / font size) is given, y is the vertical center of the
     capitals rather than the baseline.
@@ -182,17 +191,17 @@ def centered_line(segments, y: float, family: str, size: float, classes: str,
     avail = VIEW_WIDTH - 2 * EDGE_INSET if pinned else TEXT_WIDTH
 
     def fit(sz):
-        lw, space, pad, ltotal = _layout(left, sz, family, spacing, bold_weight)
-        rw, _, _, rtotal = _layout(right, sz, family, spacing, bold_weight)
-        mw, _, _, mtotal = _layout(segments, sz, family, spacing, bold_weight)
+        lw, _, cpad, ltotal = _layout(left, sz, family, spacing, bold_weight, CORNER_PAD)
+        rw, _, _, rtotal = _layout(right, sz, family, spacing, bold_weight, CORNER_PAD)
+        mw, space, pad, mtotal = _layout(segments, sz, family, spacing, bold_weight)
         gaps = 2 * space * (bool(left) + bool(right))
-        return (lw, ltotal), (rw, rtotal), (mw, mtotal), space, pad, ltotal + rtotal + mtotal + gaps
+        return (lw, ltotal), (rw, rtotal), (mw, mtotal), space, pad, cpad, ltotal + rtotal + mtotal + gaps
 
-    (lw, ltotal), (rw, rtotal), (mw, mtotal), space, pad, total = fit(size)
+    (lw, ltotal), (rw, rtotal), (mw, mtotal), space, pad, cpad, total = fit(size)
     # Hinted advances change with size, so shrink until it actually fits
     while total > avail:
         size *= avail / total * 0.995
-        (lw, ltotal), (rw, rtotal), (mw, mtotal), space, pad, total = fit(size)
+        (lw, ltotal), (rw, rtotal), (mw, mtotal), space, pad, cpad, total = fit(size)
 
     if cap:
         y = round(y + cap * size / 2, 2)
@@ -201,10 +210,26 @@ def centered_line(segments, y: float, family: str, size: float, classes: str,
     if pinned:
         x = (EDGE_INSET + ltotal + VIEW_WIDTH - EDGE_INSET - rtotal) / 2 - mtotal / 2
 
-    out = _emit(left, lw, EDGE_INSET, y, size, space, pad, classes)
+    out = []
+    for seg, x0, w in ((left, EDGE_INSET, ltotal), (right, VIEW_WIDTH - EDGE_INSET - rtotal, rtotal)):
+        if seg:
+            out.append(_corner_badge(seg[0][0], x0, w, y, size, cpad, classes))
     out += _emit(segments, mw, x, y, size, space, pad, classes)
-    out += _emit(right, rw, VIEW_WIDTH - EDGE_INSET - rtotal, y, size, space, pad, classes)
     return "\n".join(out)
+
+
+def _corner_badge(text, x, w, y, size, pad, classes):
+    """Badge spanning x..x+w inside the border, filling the top band.
+
+    The box runs out to the middle of the border stroke and down to the
+    middle of divider 1 so it merges with both.
+    """
+    left = BORDER if x <= EDGE_INSET else x
+    right = VIEW_WIDTH - BORDER if x + w >= VIEW_WIDTH - EDGE_INSET else x + w
+    return (f'  <rect class="badge-bg" x="{left:.2f}" y="{BORDER}" width="{right - left:.2f}" '
+            f'height="{HEADER_BOTTOM - BORDER}" />\n'
+            f'  <text class="{classes} badge-text" x="{x + pad:.2f}" y="{y}" '
+            f'font-size="{size:.2f}">{escape(text)}</text>')
 
 
 def build_svg(data: dict, pack_date: str) -> str:

@@ -18,15 +18,15 @@
   <rect class="border" x="2" y="2" width="396" height="96" rx="1.5" />
 
   <!-- ZONE 1: TELEMETRY -->
-  <rect class="badge-bg" x="7.00" y="7.00" width="57.48" height="17.50" rx="1" />
-  <text class="mono telemetry badge-text" x="11.50" y="19.4" font-size="10.00">ORG: IDN</text>
+  <rect class="badge-bg" x="2.00" y="2" width="63.72" height="27" />
+  <text class="mono telemetry badge-text" x="10.25" y="19.4" font-size="10.00">ORG: IDN</text>
+  <rect class="badge-bg" x="303.98" y="2" width="94.02" height="27" />
+  <text class="mono telemetry badge-text" x="310.98" y="19.4" font-size="10.00">PACK: 2026.10</text>
   <text class="mono telemetry label" x="93.96" y="19.4" font-size="10.00">ELEV:</text>
   <text class="mono telemetry" x="130.32" y="19.4" font-size="10.00">1,200-1,500M</text>
   <text class="mono telemetry" x="209.09" y="19.4" font-size="10.00">|</text>
   <text class="mono telemetry label" x="221.21" y="19.4" font-size="10.00">ACID:</text>
   <text class="mono telemetry" x="257.56" y="19.4" font-size="10.00">LOW</text>
-  <rect class="badge-bg" x="305.23" y="7.00" width="87.77" height="17.50" rx="1" />
-  <text class="mono telemetry badge-text" x="309.73" y="19.4" font-size="10.00">PACK: 2026.10</text>
 
   <!-- Divider 1 -->
   <line class="line" x1="2" y1="29" x2="398" y2="29" />

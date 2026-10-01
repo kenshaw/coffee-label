@@ -117,12 +117,12 @@ Layout, top to bottom:
          PROFILE: EARTHY // DARK CHOCOLATE // CEDAR // HERBAL
 ```
 
-`ORG` and `PACK` are white-on-black badges pinned to the left and right
-edges, so they sit in the same place on every label, with `ELEV` / `ACID`
-centered between them. All other lines are centered on the label. Each line
-is measured with the same fonts and scale `cairosvg` renders with, and only
-shrinks if it would not fit the label width, so long coffee names get a
-slightly smaller title.
+`ORG` and `PACK` are white-on-black blocks filling the top-left and
+top-right corners out to the border, so they sit in the same place on every
+label, with `ELEV` / `ACID` centered between them. All other lines are
+centered on the label. Each line is measured with the same fonts and scale
+`cairosvg` renders with, and only shrinks if it would not fit the label
+width, so long coffee names get a slightly smaller title.
 
 ### Preview
 
