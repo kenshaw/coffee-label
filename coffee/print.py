@@ -5,6 +5,20 @@ The label image is read left-to-right as it should appear on the tape. Its
 height is scaled to the printable pins of the loaded tape (128 pins / 18mm on
 24mm tape) and its length is printed at 180 dpi with a configurable blank
 margin at each end.
+
+Usage (run from the repository root, using the shared .venv):
+
+    # write the exact 1-bit bitmap to a PNG without printing
+    .venv/bin/python coffee/print.py spice/label_garam.png --preview preview.png
+
+    # print one label
+    .venv/bin/python coffee/print.py spice/label_garam.png
+
+    # print several labels, wasting less tape between them
+    .venv/bin/python coffee/print.py spice/label_garam.png --chain
+    .venv/bin/python coffee/print.py spice/label_lada_hitam.png
+
+Setup (venv, udev rule, fonts) is in README.md.
 """
 import argparse
 import sys
