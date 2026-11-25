@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 100" width="1024" height="256">
+  <rect width="400" height="100" fill="#fff"/>
+  <rect x="2" y="2" width="396" height="96" rx="3" fill="none" stroke="#000" stroke-width="2.5"/>
+
+  <!-- icon panel -->
+  <rect x="326" y="2" width="72" height="96" rx="3" fill="#000"/>
+  <rect x="324" y="2" width="6" height="96" fill="#000"/>
+  <g transform="translate(361.5 51.2) rotate(20) scale(0.92 -0.92)" stroke-width="3"><path d="M0 -27 q4 8 12 12 q14 6 14 18 q0 14 -14 16 h-24 q-14 -2 -14 -16 q0 -12 14 -18 q8 -4 12 -12 z" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"/><path d="M0 -14 q-9 10 -4 33 M0 -14 q9 10 4 33" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"/><path d="M-6 22 l-2 5 M0 22 v6 M6 22 l2 5" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"/></g>
+
+  <!-- english name, reading bottom to top -->
+  <text transform="translate(17 50) rotate(-90)" text-anchor="middle" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-weight="700" font-size="10" letter-spacing="0.5" fill="#000">GARLIC</text>
+
+  <!-- thin solid divider with a flat star in the middle -->
+  <line x1="36" y1="10" x2="36" y2="40.0" stroke="#000" stroke-width="1"/>
+  <line x1="36" y1="60.0" x2="36" y2="90" stroke="#000" stroke-width="1"/>
+  <path d="M37.81,43.74 L38.33,48.61 L42.99,50.13 L38.52,52.13 L38.51,57.04 L35.22,53.40 L30.56,54.91 L33.00,50.66 L30.13,46.69 L34.92,47.70 Z" fill="#000"/>
+
+  <!-- bahasa indonesia name: multi-word names stack one word per line -->
+  <text x="181.3" text-anchor="middle" y="44.8" font-family="'Arial Black', 'Impact', 'DejaVu Sans', sans-serif" font-weight="900" font-size="47.0" letter-spacing="0.6" fill="#000">BAWANG</text>
+  <text x="181.3" text-anchor="middle" y="88.8" font-family="'Arial Black', 'Impact', 'DejaVu Sans', sans-serif" font-weight="900" font-size="47.0" letter-spacing="0.6" fill="#000">PUTIH</text>
+</svg>

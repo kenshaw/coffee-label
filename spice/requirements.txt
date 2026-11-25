@@ -1,0 +1,4 @@
+cairocffi
+CairoSVG
+pillow
+pyusb

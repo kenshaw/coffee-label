@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 100" width="1024" height="256">
+  <rect width="400" height="100" fill="#fff"/>
+  <rect x="2" y="2" width="396" height="96" rx="3" fill="none" stroke="#000" stroke-width="2.5"/>
+
+  <!-- icon panel -->
+  <rect x="326" y="2" width="72" height="96" rx="3" fill="#000"/>
+  <rect x="324" y="2" width="6" height="96" fill="#000"/>
+  <g transform="translate(366.4 51.4) rotate(0) scale(0.92 0.92)" stroke-width="3"><path d="M-10 -14 q-18 2 -18 20 q0 20 14 22 q5 1 10 -4 q5 5 10 4 q14 -2 14 -22 q0 -18 -18 -20" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"/><path d="M-5 -12 q-8 12 -2 30 M5 -12 q8 12 2 30" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"/><path d="M-10 -14 q4 -3 10 0 q6 -3 10 0" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"/><path d="M0 -14 q0 -8 -3 -12 q-2 -3 3 -5 q6 -1 9 3" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"/></g>
+
+  <!-- english name, reading bottom to top -->
+  <text transform="translate(17 50) rotate(-90)" text-anchor="middle" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-weight="700" font-size="10" letter-spacing="0.5" fill="#000">PAPRIKA</text>
+
+  <!-- thin solid divider with a flat star in the middle -->
+  <line x1="36" y1="10" x2="36" y2="40.0" stroke="#000" stroke-width="1"/>
+  <line x1="36" y1="60.0" x2="36" y2="90" stroke="#000" stroke-width="1"/>
+  <path d="M37.81,43.74 L38.33,48.61 L42.99,50.13 L38.52,52.13 L38.51,57.04 L35.22,53.40 L30.56,54.91 L33.00,50.66 L30.13,46.69 L34.92,47.70 Z" fill="#000"/>
+
+  <!-- bahasa indonesia name: multi-word names stack one word per line -->
+  <text x="181.3" text-anchor="middle" y="67.5" font-family="'Arial Black', 'Impact', 'DejaVu Sans', sans-serif" font-weight="900" font-size="49.0" letter-spacing="0.6" fill="#000">PAPRIKA</text>
+</svg>
